@@ -1,4 +1,4 @@
-package com.matheus.core.data.network.response
+package com.example.marvelapp.framework.network.response
 
 data class DataContainerResponse(
     val results: List<CharactersResponse>
