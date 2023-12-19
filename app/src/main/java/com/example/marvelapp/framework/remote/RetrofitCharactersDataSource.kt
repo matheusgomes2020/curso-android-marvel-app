@@ -3,12 +3,13 @@ package com.example.marvelapp.framework.remote
 import com.example.marvelapp.framework.network.MarvelApi
 import com.example.marvelapp.framework.network.response.DataWrapperResponse
 import com.matheus.core.data.repository.CharactersRemoteDataSource
+import javax.inject.Inject
 
-class RetrofitCharactersDataSource(
+class RetrofitCharactersDataSource @Inject constructor(
     private val marvelApi: MarvelApi
 ) : CharactersRemoteDataSource<DataWrapperResponse> {
 
     override suspend fun fetchCharacters(queries: Map<String, String>): DataWrapperResponse {
-        marvelApi.getCharacters(queries)
+        return marvelApi.getCharacters(queries)
     }
 }
