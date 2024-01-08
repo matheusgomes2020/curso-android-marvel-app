@@ -15,29 +15,14 @@
               </deviceKey>
             </Target>
           </targetSelectedWithDropDown>
-          <timeTargetWasSelectedWithDropDown value="2023-12-19T15:31:42.365669700Z" />
-          <multipleDevicesSelectedInDropDown value="true" />
-          <runningDeviceTargetsSelectedWithDialog>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="VIRTUAL_DEVICE_PATH" />
-                  <value value="C:\Users\batat\.android\avd\Pixel_7_Pro_API_33.avd" />
-                </Key>
-              </deviceKey>
-            </Target>
-            <Target>
-              <type value="RUNNING_DEVICE_TARGET" />
-              <deviceKey>
-                <Key>
-                  <type value="SERIAL_NUMBER" />
-                  <value value="96665905" />
-                </Key>
-              </deviceKey>
-            </Target>
-          </runningDeviceTargetsSelectedWithDialog>
+          <timeTargetWasSelectedWithDropDown value="2024-01-05T16:04:56.493910600Z" />
         </State>
+      </entry>
+      <entry key="should validate flow paging data creation when invoke from use case is called()">
+        <State />
+      </entry>
+      <entry key="should validate flow paging data creation when invoke from use cqase is called()">
+        <State />
       </entry>
     </value>
   </component>

@@ -1,4 +1,4 @@
-package com.matheus.core.domain.model
+package com.example.core.domain.model
 
 data class Character (
     val name: String,

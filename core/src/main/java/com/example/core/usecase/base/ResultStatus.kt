@@ -1,4 +1,4 @@
-package com.matheus.core.usecase.base
+package com.example.core.usecase.base
 
 sealed class ResultStatus<out T> {
 

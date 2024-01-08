@@ -1,4 +1,4 @@
-package com.matheus.core.data.repository
+package com.example.core.data.repository
 
 interface CharactersRemoteDataSource<T> {
 

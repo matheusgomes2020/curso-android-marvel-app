@@ -3,8 +3,7 @@ package com.example.marvelapp.presentation.characters
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
-import com.matheus.core.domain.model.Character
+import com.example.core.domain.model.Character
 
 class CharactersAdapter : PagingDataAdapter<Character, CharactersViewHolder>(diffCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder {
