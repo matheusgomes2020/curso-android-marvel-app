@@ -33,9 +33,6 @@ class CharactersViewModelTest {
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    @ExperimentalCoroutinesApi
-    val testDispatcher: TestDispatcher = StandardTestDispatcher()
-
     @Mock
     private lateinit var charactersUseCase: GetCharactersUseCase
 
@@ -53,7 +50,6 @@ class CharactersViewModelTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setUp() {
-        Dispatchers.setMain((testDispatcher))
         charactersViewModel = CharactersViewModel( charactersUseCase )
     }
 
@@ -87,7 +83,6 @@ class CharactersViewModelTest {
     @After
     fun tearDownDispatcher() {
         Dispatchers.resetMain()
-        testDispatcher
     }
 }
 
