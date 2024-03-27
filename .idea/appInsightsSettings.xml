@@ -22,6 +22,23 @@
             </InsightsFilterSettings>
           </value>
         </entry>
+        <entry key="Firebase Crashlytics">
+          <value>
+            <InsightsFilterSettings>
+              <option name="connection">
+                <ConnectionSetting>
+                  <option name="appId" value="com.example.marvelapp.debug" />
+                  <option name="mobileSdkAppId" value="1:838313011340:android:9cda632cef28e83894b3a9" />
+                  <option name="projectId" value="marvelapp-61795" />
+                  <option name="projectNumber" value="838313011340" />
+                </ConnectionSetting>
+              </option>
+              <option name="signal" value="SIGNAL_UNSPECIFIED" />
+              <option name="timeIntervalDays" value="THIRTY_DAYS" />
+              <option name="visibilityType" value="ALL" />
+            </InsightsFilterSettings>
+          </value>
+        </entry>
       </map>
     </option>
   </component>

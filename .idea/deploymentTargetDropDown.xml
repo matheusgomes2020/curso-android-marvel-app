@@ -2,6 +2,9 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="CharactersFragmentTest">
+        <State />
+      </entry>
       <entry key="app">
         <State>
           <targetSelectedWithDropDown>
@@ -17,6 +20,28 @@
           </targetSelectedWithDropDown>
           <timeTargetWasSelectedWithDropDown value="2024-02-02T19:03:41.126666900Z" />
         </State>
+      </entry>
+      <entry key="shouldLoadMoreCharacters_whenNewPageIsRequested()">
+        <State>
+          <targetSelectedWithDropDown>
+            <Target>
+              <type value="QUICK_BOOT_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="VIRTUAL_DEVICE_PATH" />
+                  <value value="C:\Users\batat\.android\avd\Pixel_7_Pro_API_33.avd" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </targetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-03-27T22:56:41.139066700Z" />
+        </State>
+      </entry>
+      <entry key="shouldShowCharacters_whenViewCreated()">
+        <State />
+      </entry>
+      <entry key="shouldShowErrorView_whenReceivesAnErrorFromApi()">
+        <State />
       </entry>
     </value>
   </component>
