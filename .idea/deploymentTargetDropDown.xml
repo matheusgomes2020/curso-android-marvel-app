@@ -24,6 +24,9 @@
           <timeTargetWasSelectedWithDropDown value="2024-02-02T19:03:41.126666900Z" />
         </State>
       </entry>
+      <entry key="shouldShowCharacters_whenViewIsCreated()">
+        <State />
+      </entry>
       <entry key="shouldvalidateflowpagingdatacreationwheninvokefromusecaseiscalled()">
         <State />
       </entry>
