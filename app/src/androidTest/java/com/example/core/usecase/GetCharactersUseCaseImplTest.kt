@@ -19,10 +19,10 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class GetCharactersUseCaseImplTest {
 
-    @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
@@ -40,7 +40,6 @@ class GetCharactersUseCaseImplTest {
         //getCharactersUseCase = GetCharactersUseCaseImpl(repository)
     }
 
-    @ExperimentalCoroutinesApi
     @Test
     fun `shouldvalidateflowpagingdatacreationwheninvokefromusecaseiscalled`() =
         runTest {

@@ -2,9 +2,6 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
-      <entry key="CharactersFragmentTest">
-        <State />
-      </entry>
       <entry key="GetCharactersUseCaseImplTest">
         <State />
       </entry>
@@ -63,9 +60,6 @@
             </Target>
           </targetsSelectedWithDialog>
         </State>
-      </entry>
-      <entry key="shouldShowCharacters_whenViewIsCreated()">
-        <State />
       </entry>
       <entry key="shouldvalidateflowpagingdatacreationwheninvokefromusecaseiscalled()">
         <State />
