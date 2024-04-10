@@ -9,7 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
 import com.example.marvelapp.R
 import com.example.marvelapp.databinding.FragmentDetailBinding
 import com.example.marvelapp.framework.imageloader.ImageLoader
@@ -40,27 +39,27 @@ class DetailFragment : Fragment() {
         _binding = this
     }.root
 
-    @Suppress("MagicNumber")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val detailViewArg = args.detailViewArg
         binding.imageCharacter.run {
             transitionName = detailViewArg.name
-            imageLoader.load(this, detailViewArg.imageUrl, R.drawable.ic_img_loading_error)
+            imageLoader.load(this, detailViewArg.imageUrl)
 
             setSharedElementTransitionOnEnter()
 
             viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
-                val logResult = when (uiState) {
-                    DetailViewModel.UiState.Loading -> "Loading comics..."
-                    is DetailViewModel.UiState.Success -> uiState.comics.toString()
-                    is DetailViewModel.UiState.Error -> "Error when loading comics"
+                when (uiState) {
+                    DetailViewModel.UiState.Loading -> {
+                    }
+                    is DetailViewModel.UiState.Success -> binding.recyclerParentDetail.run {
+                            setHasFixedSize(true)
+                            adapter = DetailParentAdapter(uiState.detailParentList, imageLoader)
+                    }
+                    is DetailViewModel.UiState.Error -> {
+                    }
                 }
-
-                Log.d(DetailFragment::class.simpleName, logResult)
-
             }
-
 
             viewModel.getComics(detailViewArg.characterId)
 

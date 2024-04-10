@@ -14,7 +14,6 @@ data class ComicsResponse(
 fun ComicsResponse.toComicModel(): Comic {
     return Comic(
         id = this.id,
-        imageUrl = "${this.thumbnail.path}.${this.thumbnail.extension}"
-            .replace("http","https")
+        this.thumbnail.getHttpsUrl()
     )
 }
