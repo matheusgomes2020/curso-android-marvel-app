@@ -16,58 +16,56 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val comicsUseCase: GetCharacterCategoriesUseCase
+    private val getCharacterCategoriesUseCase: GetCharacterCategoriesUseCase
 ) : ViewModel() {
 
     private val _uiState = MutableLiveData<UiState>()
-    val uiState : LiveData<UiState> get() = _uiState
+    val uiState: LiveData<UiState> get() = _uiState
 
     fun getCharacterCategories(characterId: Int) = viewModelScope.launch {
-        // Pode se usar .collect aqui também  (teria o mesmo resultado)
-        comicsUseCase(GetCharacterCategoriesUseCase.GetComicsParams(characterId))
+        getCharacterCategoriesUseCase
+            .invoke(GetCharacterCategoriesUseCase.GetCategoriesParams(characterId))
             .watchStatus()
     }
 
     private fun Flow<ResultStatus<Pair<List<Comic>, List<Event>>>>.watchStatus() =
         viewModelScope.launch {
-        collect { status  ->
-            _uiState.value = when (status) {
-                ResultStatus.Loading -> UiState.Loading
-                is ResultStatus.Success -> {
-                    val detailParentList = mutableListOf<DetailParentVE>()
+            collect { status ->
+                _uiState.value = when (status) {
+                    ResultStatus.Loading -> UiState.Loading
+                    is ResultStatus.Success -> {
+                        val detailParentList = mutableListOf<DetailParentVE>()
 
-                    val comics = status.data.first
-                    if (comics.isNotEmpty()) {
-                        comics.map {
-                            DetailChildVE(it.id, it.imageUrl)
-                        }.also {
-                            detailParentList.add(
-                                DetailParentVE(R.string.details_comics_category, it)
-                            )
+                        val comics = status.data.first
+                        if (comics.isNotEmpty()) {
+                            comics.map {
+                                DetailChildVE(it.id, it.imageUrl)
+                            }.also {
+                                detailParentList.add(
+                                    DetailParentVE(R.string.details_comics_category, it)
+                                )
+                            }
                         }
-                    }
 
-                    val events = status.data.second
-                    if (events.isNotEmpty()) {
-                        events.map {
-                            DetailChildVE(it.id, it.imageUrl)
-                        }.also {
-                            detailParentList.add(
-                                DetailParentVE(R.string.details_events_category, it)
-                            )
+                        val events = status.data.second
+                        if (events.isNotEmpty()) {
+                            events.map {
+                                DetailChildVE(it.id, it.imageUrl)
+                            }.also {
+                                detailParentList.add(
+                                    DetailParentVE(R.string.details_events_category, it)
+                                )
+                            }
                         }
+
+                        if (detailParentList.isNotEmpty()) {
+                            UiState.Success(detailParentList)
+                        } else UiState.Empty
                     }
-
-                    if (detailParentList.isNotEmpty()) {
-                        UiState.Success(detailParentList)
-                    } else UiState.Empty
-
-                    UiState.Success(detailParentList)
+                    is ResultStatus.Error -> UiState.Error
                 }
-                is ResultStatus.Error -> UiState.Error
             }
         }
-    }
 
     sealed class UiState {
         object Loading : UiState()
@@ -75,5 +73,4 @@ class DetailViewModel @Inject constructor(
         object Error : UiState()
         object Empty : UiState()
     }
-
 }

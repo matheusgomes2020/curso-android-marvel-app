@@ -26,8 +26,8 @@ class GetCharactersUseCaseImplTest {
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    //@Mock
-    //lateinit var repository: CharactersRepository
+    @Mock
+    lateinit var repository: CharactersRepository
 
     private lateinit var getCharactersUseCase: GetCharactersUseCase
 
@@ -37,20 +37,20 @@ class GetCharactersUseCaseImplTest {
 
     @Before
     fun setUp() {
-        //getCharactersUseCase = GetCharactersUseCaseImpl(repository)
+        getCharactersUseCase = GetCharactersUseCaseImpl(repository)
     }
 
     @Test
-    fun `shouldvalidateflowpagingdatacreationwheninvokefromusecaseiscalled`() =
+    fun `should validate flow paging data creation when invoke from use case is called`() =
         runTest {
-//            whenever(repository.getCharacters(""))
-//                .thenReturn(fakePagingSource)
-//
-//            val result = getCharactersUseCase
-//                .invoke(GetCharactersUseCase.GetCharactersParams("", PagingConfig(20)))
-//
-//            verify(repository).getCharacters("")
-//
-//            assertNotNull(result.first())
+            whenever(repository.getCharacters(""))
+                .thenReturn(fakePagingSource)
+
+            val result = getCharactersUseCase
+                .invoke(GetCharactersUseCase.GetCharactersParams("", PagingConfig(20)))
+
+            verify(repository).getCharacters("")
+
+            assertNotNull(result.first())
        }
 }
