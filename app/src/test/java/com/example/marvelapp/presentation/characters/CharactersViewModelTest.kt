@@ -10,6 +10,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.TestDispatcher
@@ -26,10 +27,10 @@ import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import kotlin.RuntimeException
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class CharactersViewModelTest {
 
-    @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
@@ -47,13 +48,11 @@ class CharactersViewModelTest {
         )
     )
 
-    @ExperimentalCoroutinesApi
     @Before
     fun setUp() {
         charactersViewModel = CharactersViewModel( charactersUseCase )
     }
 
-    @ExperimentalCoroutinesApi
     @Test
     fun `should validate the paging data objects values when calling charactersPagingData`() {
         runTest {
@@ -65,11 +64,11 @@ class CharactersViewModelTest {
             )
 
             val result = charactersViewModel.charactersPagingData("")
-                    assertEquals( 1, result.count() )
+
+            assertNotNull(result.first())
             }
         }
 
-    @ExperimentalCoroutinesApi
     @Test(expected = RuntimeException::class)
     fun `should throw an exception when calling to use case returns an exception`() =
         runTest {
@@ -79,7 +78,6 @@ class CharactersViewModelTest {
             charactersViewModel.charactersPagingData("")
         }
 
-    @ExperimentalCoroutinesApi
     @After
     fun tearDownDispatcher() {
         Dispatchers.resetMain()

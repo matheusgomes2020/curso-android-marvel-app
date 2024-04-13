@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class CharactersResponse(
     @SerializedName("id")
-    val id: String,
+    val id: Int,
     @SerializedName("name")
     val name: String,
     @SerializedName("thumbnail")
@@ -14,8 +14,8 @@ data class CharactersResponse(
 
 fun CharactersResponse.toCharacterModel(): Character {
     return Character(
+        id = this.id,
         name = this.name,
-        imageUrl = "${this.thumbnail.path}.${this.thumbnail.extension}"
-            .replace("http","https")
+        this.thumbnail.getHttpsUrl()
     )
 }
