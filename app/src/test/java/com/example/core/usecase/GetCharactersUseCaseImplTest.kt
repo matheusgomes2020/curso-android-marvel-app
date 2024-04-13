@@ -19,15 +19,15 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 
+@ExperimentalCoroutinesApi
 @RunWith(MockitoJUnitRunner::class)
 class GetCharactersUseCaseImplTest {
 
-    @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
-    //@Mock
-    //lateinit var repository: CharactersRepository
+    @Mock
+    lateinit var repository: CharactersRepository
 
     private lateinit var getCharactersUseCase: GetCharactersUseCase
 
@@ -37,21 +37,20 @@ class GetCharactersUseCaseImplTest {
 
     @Before
     fun setUp() {
-        //getCharactersUseCase = GetCharactersUseCaseImpl(repository)
+        getCharactersUseCase = GetCharactersUseCaseImpl(repository)
     }
 
-    @ExperimentalCoroutinesApi
     @Test
-    fun `shouldvalidateflowpagingdatacreationwheninvokefromusecaseiscalled`() =
+    fun `should validate flow paging data creation when invoke from use case is called`() =
         runTest {
-//            whenever(repository.getCharacters(""))
-//                .thenReturn(fakePagingSource)
-//
-//            val result = getCharactersUseCase
-//                .invoke(GetCharactersUseCase.GetCharactersParams("", PagingConfig(20)))
-//
-//            verify(repository).getCharacters("")
-//
-//            assertNotNull(result.first())
+            whenever(repository.getCharacters(""))
+                .thenReturn(fakePagingSource)
+
+            val result = getCharactersUseCase
+                .invoke(GetCharactersUseCase.GetCharactersParams("", PagingConfig(20)))
+
+            verify(repository).getCharacters("")
+
+            assertNotNull(result.first())
        }
 }

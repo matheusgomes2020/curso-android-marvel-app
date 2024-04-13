@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 
+// in P "entrada" e r = saída = p nuna pose ser retornado, somente como parâmetro
 abstract class UseCase<in P, R> {
 
     operator fun invoke(params: P): Flow<ResultStatus<R>> = flow {
